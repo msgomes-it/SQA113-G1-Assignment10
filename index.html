@@ -3,23 +3,32 @@
 # according to the requirements of the DevOps Level 2 course.
 # Instructor: Washington Valencia
 # Institution: CCTB College
+# Enhanced for Assignment #10
 -->
-<html lang="en">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CCTB - Tic-Tac-Toe</title>
+  <title>CCTB - Tic-Tac-Toe (Assignment #10)</title>
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon"
-    href="https://canvascctb.s3.ca-central-1.amazonaws.com/account_1/attachments/95/CCTB_favicon.ico" />
-
+        href="https://canvascctb.s3.ca-central-1.amazonaws.com/account_1/attachments/95/CCTB_favicon.ico" />
 </head>
 
 <body onload="initialize()">
-  <img class="rounded" src="https://guscanada.com/wp-content/uploads/2021/09/CCTB_logo_1_RGB.png">
-  <h1>Tic-Tac-Toe</h1>
+  <img class="rounded" src="https://guscanada.com/wp-content/uploads/2021/09/CCTB_logo_1_RGB.png" alt="CCTB Logo">
+  <h1>Tic-Tac-Toe By Matheus Gomes</h1>
+
+  <!-- Display current date/time to show last update -->
+  <p id="updateInfo" style="font-style: italic; margin-bottom: 10px;"></p>
+  <script>
+    const dateTime = new Date().toLocaleString();
+    document.getElementById('updateInfo').innerText = `Last updated on: ${dateTime}`;
+  </script>
+
   <table id="table_game">
     <tr>
       <td class="td_game">
@@ -55,51 +64,58 @@
       </td>
     </tr>
   </table>
-  <div id="restart" title="Start new game" onclick="restartGame(true)"><span
-      style="vertical-align:top;position:relative;top:-10px">#</span></div>
+
+  <div id="restart" title="Start a new game" onclick="restartGame(true)">
+    <span style="vertical-align:top; position:relative; top:-10px">#</span>
+  </div>
+
   <table>
     <tr>
       <th class="th_list">Computer</th>
-      <th class="th_list" style="padding-right:10px;padding-left:10px">Draws</th>
+      <th class="th_list" style="padding-right:10px; padding-left:10px">Draws</th>
       <th class="th_list">Player</th>
     </tr>
     <tr>
       <td class="td_list" id="computer_score">0</td>
-      <td class="td_list" style="padding-right:10px;padding-left:10px" id="tie_score">0</td>
+      <td class="td_list" style="padding-right:10px; padding-left:10px" id="tie_score">0</td>
       <td class="td_list" id="player_score">0</td>
     </tr>
   </table>
-  <!-- The modal dialog for announcing the winner -->
+
+  <!-- Modal dialog for announcing the winner -->
   <div id="winAnnounce" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
       <span class="close" onclick="closeModal('winAnnounce')">&times;</span>
       <p id="winText"></p>
     </div>
   </div>
-  <!-- The dialog for getting feedback from the user -->
+
+  <!-- Dialog for user feedback -->
   <div id="userFeedback" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
       <p id="questionText"></p>
-      <p><button id="yesBtn">Yes</button>&nbsp;<button id="noBtn">No</button></p>
+      <p>
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+      </p>
     </div>
   </div>
-  <!-- The options dialog -->
+
+  <!-- Options dialog -->
   <div id="optionsDlg" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
       <h2>Hi, how would you like to play?</h2>
       <h3>Difficulty:</h3>
-      <label><input type="radio" name="difficulty" id="r0" value="0">easy&nbsp;</label>
-      <label><input type="radio" name="difficulty" id="r1" value="1" checked>hard</label><br>
+      <label><input type="radio" name="difficulty" id="r0" value="0">Easy</label>
+      <label><input type="radio" name="difficulty" id="r1" value="1" checked>Hard</label><br>
       <h3>Play as:</h3>
-      <label><input type="radio" name="player" id="rx" value="x" checked>X (go first)&nbsp;</label>
-      <label><input type="radio" name="player" id="ro" value="o">O<br></label>
+      <label><input type="radio" name="player" id="rx" value="x" checked>X (go first)</label>
+      <label><input type="radio" name="player" id="ro" value="o">O</label><br>
       <p><button id="okBtn" onclick="getOptions()">Play</button></p>
     </div>
   </div>
-</body>
-<script src="js.js"></script>
 
+  <script src="js.js"></script>
+</body>
 </html>
+
